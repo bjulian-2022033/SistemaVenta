@@ -2,10 +2,14 @@
 
 import { checkUpdate } from '../../utils/validator.js'
 import Product from './producto.model.js'
+import Category from '../category/category.model.js'
 
 export const saveProduct = async(req, res) =>{
     try {
         let data = req.body
+
+        let category = await Category.findOne({_id: data.category})
+        if(!category) return res.status(404).send({message: 'Category not found'})
         let product = new Product(data)
         await product.save()
 

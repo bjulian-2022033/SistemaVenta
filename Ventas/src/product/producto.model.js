@@ -2,7 +2,7 @@
 
 import { Schema, model } from 'mongoose'
 
-const productSchema = Schema({
+const productSchema = new Schema({
     nameProduct: {
         type: String,
         required: true
@@ -15,6 +15,12 @@ const productSchema = Schema({
         type: Number,
         required: true
     },
+    category: {
+        type: Schema.ObjectId,
+        ref: 'category',
+        required: true
+    }
+
 })
 
 export default model('product', productSchema)

@@ -1,7 +1,7 @@
 'use strict'
 import { Schema, model } from 'mongoose'
 
-const categorySchema = Schema({
+const categorySchema = new Schema({
     nameCategory: {
         type:String,
         required: true
